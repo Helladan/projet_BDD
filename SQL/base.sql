@@ -1,0 +1,76 @@
+DROP TABLE IF EXISTS EMPRUNT;
+DROP TABLE IF EXISTS EXEMPLAIRE;
+DROP TABLE IF EXISTS OEUVRE;
+DROP TABLE IF EXISTS AUTEUR;
+DROP TABLE IF EXISTS ADHERENT;
+
+
+CREATE TABLE IF NOT EXISTS ADHERENT
+(
+	idAdherent   BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	nomAdherent  VARCHAR(30),
+	adresse      VARCHAR(50),
+	datePaiement DATE
+)
+	ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS AUTEUR
+(
+	idAuteur     BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	nomAuteur    VARCHAR(30),
+	prenomAuteur VARCHAR(30)
+)
+	ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS OEUVRE
+(
+	noOeuvre     BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	titre        VARCHAR(50),
+	dateParution DATE,
+	idAuteur     BIGINT UNSIGNED,
+
+	CONSTRAINT fk_oeuvre_auteur
+	FOREIGN KEY (idAuteur)
+	REFERENCES AUTEUR (idAuteur)
+		ON DELETE SET NULL
+)
+	ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS EXEMPLAIRE
+(
+	noExemplaire BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	etat         ENUM ('neuf', 'bon', 'moyen', 'mauvais'),
+	dateAchat    DATE,
+	prix         FLOAT(2),
+	noOeuvre     BIGINT UNSIGNED,
+
+	CONSTRAINT fk_exemplaire_oeuvre
+	FOREIGN KEY (noOeuvre)
+	REFERENCES OEUVRE (noOeuvre)
+		ON DELETE SET NULL
+)
+	ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS EMPRUNT
+(
+	idAdherent   BIGINT UNSIGNED,
+	noExemplaire BIGINT UNSIGNED,
+	dateEmprunt  DATE,
+	dateRendu    DATE,
+
+	CONSTRAINT fk_emprunt_adherent
+	FOREIGN KEY (idAdherent)
+	REFERENCES ADHERENT (idAdherent)
+	ON DELETE SET NULL ,
+
+	CONSTRAINT fk_emprunt_exemplaire
+	FOREIGN KEY (noExemplaire)
+	REFERENCES EXEMPLAIRE (noExemplaire)
+	ON DELETE SET NULL ,
+
+	PRIMARY KEY (idAdherent, noExemplaire, dateEmprunt)
+)
+	ENGINE = Innodb;

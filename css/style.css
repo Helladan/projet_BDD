@@ -1,0 +1,261 @@
+/*********************
+****    ENTETE    ****
+*********************/
+
+#entete
+{
+	text-align       : center;
+	padding          : 25px 0;
+	box-shadow       : 0 5px 30px rgba(0, 0, 0, 0.5);
+	background-color : #01597D;
+	margin-bottom    : 10px;
+}
+
+.siteHeader
+{
+	font-size   : 50px;
+	color       : white;
+	font-family : slabo, serif;
+}
+
+/*******************
+****    MENU    ****
+*******************/
+
+.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
+{
+	background-color : #01597D;
+	font-size        : 16px;
+	font-weight      : bold;
+	color            : #ECFAFF;
+	font-family      : slabo, serif;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover
+{
+	background-color : #3B5E7F;
+}
+
+.sticky
+{
+	box-shadow       : 5px 5px 30px rgba(0, 0, 0, 0.5);
+	background-color : #01597D;
+}
+
+.top-bar.expanded .title-area,
+.top-bar.expanded .toggle-topbar a
+{
+	background-color : #3B5E7F;
+	color            : #FFFFFF;
+}
+
+.top-bar.expanded .title-area,
+.top-bar.expanded .toggle-topbar a span::after
+{
+	box-shadow : 0 0 0 1px #FFF, 0 7px 0 1px #FFF, 0 14px 0 1px #FFF;
+}
+
+.fixed
+{
+	box-shadow : 5px 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+#siteMenu
+{
+	margin-bottom : 30px;
+}
+
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button),
+.top-bar-section ul li:hover:not(.has-form) > a
+{
+	background-color : #3B5E7F;
+}
+
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button):hover
+{
+	background-color : #01597D;
+}
+
+/**********************
+*****    POSTS    *****
+**********************/
+
+.postTitle
+{
+	font-size : 40px;
+}
+
+.postTag
+{
+	font-style    : italic;
+	margin-bottom : 20px;
+}
+
+.post .pseudo
+{
+	color       : #1F7E93;
+	font-style  : italic;
+	font-weight : bold;
+}
+
+.post
+{
+	text-align : justify;
+}
+
+.post ul
+{
+	margin-left : 35px;
+}
+
+/* Quotes */
+.post blockquote
+{
+	background-color : #F7F9F9;
+	box-shadow       : 2px 2px 5px black;
+	font-style       : italic;
+	font-family      : Georgia, "Times New Roman", serif;
+}
+
+.post blockquote p
+{
+	display : inline;
+}
+
+blockquote:before
+{
+	content        : '"';
+	text-shadow    : 2px 2px 5px;
+	height         : 0;
+	color          : #AAA;
+	font-size      : 50px;
+	line-height    : 0.1em;
+	margin-right   : 0.25em;
+	vertical-align : -0.4em;
+}
+
+blockquote:after
+{
+	content        : '"';
+	text-shadow    : 2px 2px 5px;
+	height         : 0;
+	color          : #AAA;
+	font-size      : 50px;
+	line-height    : 0.1em;
+	margin-right   : 0.25em;
+	vertical-align : -0.4em;
+}
+
+/* Code */
+.code:before
+{
+	content         : 'Code :';
+	display         : block;
+	text-decoration : underline;
+	color           : black;
+}
+
+.code
+{
+	background-color : #F7F9F9;
+	font-family      : Courier, monospace;
+	box-shadow       : 2px 2px 5px black;
+	color            : blue;
+	padding          : 10px;
+}
+
+.code p
+{
+	margin : 0;
+}
+
+/*********************
+****    FOOTER    ****
+*********************/
+
+#footer p
+{
+	text-align : center;
+	font-size  : 12px;
+}
+
+.footerLink, .footerLink:hover
+{
+	color       : #CE3333;
+	font-weight : bold;
+}
+
+/**********************
+****    GENERAL    ****
+**********************/
+
+body
+{
+	background-color : #F1F1F1;
+}
+
+.panel
+{
+	box-shadow       : 2px 2px 30px rgba(0, 0, 0, 0.5);
+	background-color : #FFF;
+	border           : solid #01597D;
+	font-family      : lato, serif;
+}
+
+.panel h1
+{
+	color : #02DCC3;
+}
+
+/******************
+****    FAQ    ****
+******************/
+.questionPanel
+{
+	padding          : 10px 20px;
+	background-color : #02DCC3;
+	border           : none;
+}
+
+p.question
+{
+	text-align    : center;
+	font-weight   : bold;
+	margin-bottom : 0;
+	color         : #000000;
+}
+
+.answerPanel
+{
+	border          : solid #02DCC3;
+	display         : flex;
+	flex-direction  : column;
+	justify-content : center;
+}
+
+.illustrationPannel
+{
+	display         : flex;
+	flex-direction  : column;
+	justify-content : center;
+}
+
+.illustration
+{
+	text-align : center;
+}
+
+.answer
+{
+	text-align : justify;
+}
+
+.answer ul
+{
+	margin-left : 35px;
+}
+
+.answer :last-child
+{
+	margin-bottom : 0;
+}
