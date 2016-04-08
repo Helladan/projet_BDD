@@ -23,3 +23,11 @@
 		
 		return $link;
 	}
+	
+	function setPageTitle($title)
+	{		
+		echo '
+        <script type="text/javascript">
+            document.title = "'.$title.'";
+        </script>';
+	}

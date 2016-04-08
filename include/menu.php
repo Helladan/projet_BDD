@@ -24,52 +24,59 @@
 							</a>
 						</li>
 						<li class="has-dropdown">
-							<a href="#">Gestion des livres</a>
+							<a href="#">
+								Gestion de la base de données
+							</a>
 							<ul class="dropdown">
-								<li>
-									<a href="bookDisplay.php">
-										Liste des livres
-									</a>
+								<li class="has-dropdown">
+									<a href="#">Gestion des exemplaires</a>
+									<ul class="dropdown">
+										<li>
+											<a href="bookDisplay.php">
+												Liste des exemplaires
+											</a>
+										</li>
+										<li>
+											<a href="bookInsert.php">
+												Ajouter un exemplaire
+											</a>
+										</li>
+										<li>
+											<a href="bookMod.php">
+												Modifier un exemplaire
+											</a>
+										</li>
+										<li>
+											<a href="bookRemove.php">
+												Supprimer un exemplaire
+											</a>
+										</li>
+									</ul>
 								</li>
-								<li>
-									<a href="bookInsert.php">
-										Ajouter un livre
-									</a>
-								</li>
-								<li>
-									<a href="bookMod.php">
-										Modifier un livre
-									</a>
-								</li>
-								<li>
-									<a href="bookRemove.php">
-										Supprimer un livre
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="has-dropdown">
-							<a href="#">Gestion des adhérents</a>
-							<ul class="dropdown">
-								<li>
-									<a href="userDisplay.php">
-										Liste des adhérents
-									</a>
-								</li>
-								<li>
-									<a href="userInsert.php">
-										Ajouter un adhérent
-									</a>
-								</li>
-								<li>
-									<a href="userMod.php">
-										Modifier un adhérent
-									</a>
-								</li>
-								<li>
-									<a href="userRemove.php">
-										Supprimer un adhérent
-									</a>
+								<li class="has-dropdown">
+									<a href="#">Gestion des adhérents</a>
+									<ul class="dropdown">
+										<li>
+											<a href="userDisplay.php">
+												Liste des adhérents
+											</a>
+										</li>
+										<li>
+											<a href="userInsert.php">
+												Ajouter un adhérent
+											</a>
+										</li>
+										<li>
+											<a href="userMod.php">
+												Modifier un adhérent
+											</a>
+										</li>
+										<li>
+											<a href="userRemove.php">
+												Supprimer un adhérent
+											</a>
+										</li>
+									</ul>
 								</li>
 							</ul>
 						</li>
