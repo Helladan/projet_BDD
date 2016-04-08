@@ -133,7 +133,7 @@
 ?>
 
 <?php include "include/header.php"; ?>
-	<?php setPageTitle('Enregistrement d\'un exemplaire')?>
+<?php setPageTitle('Enregistrement d\'un exemplaire') ?>
 <?php include "include/menu.php"; ?>
 	<!-- DISPLAY -->
 <?php if($enregistrement): ?>
@@ -162,7 +162,6 @@
 								Oeuvre
 								<select name="oeuvre"
 										id="oeuvre"
-										name="oeuvre"
 										style="margin-bottom: 0">
 									<option value="0">
 										Selectionnez une oeuvre

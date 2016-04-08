@@ -14,8 +14,8 @@ if()
 }
 ?>
 
-<?php setPageTitle('Modification d\'exemplaire')?>
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Modification d\'exemplaire')?>
 <?php include "include/menu.php"; ?>
 
 

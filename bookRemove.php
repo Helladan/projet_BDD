@@ -10,8 +10,8 @@ if()
 }
 ?>
 
-<?php setPageTitle('Suppression d\'exemplaire')?>
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Suppression d\'exemplaire')?>
 <?php include "include/menu.php"; ?>
 
 

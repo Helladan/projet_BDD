@@ -14,8 +14,8 @@ if()
 }
 ?>
 
-<?php setPageTitle('Modification d\'utilisateur')?>
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Modification d\'utilisateur')?>
 <?php include "include/menu.php"; ?>
 
 <?php include "include/footer.php"; ?>

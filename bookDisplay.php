@@ -15,8 +15,8 @@
 	$data = $que->fetchAll();
 ?>
 
-<?php setPageTitle('Liste des exemplaires')?>
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Liste des exemplaires') ?>
 <?php include "include/menu.php"; ?>
 
 <div class="row">
@@ -31,6 +31,7 @@
 					<th>Date d'achat</th>
 					<th>Etat</th>
 					<th>Prix</th>
+					<th></th>
 				</tr>
 				<?php foreach($data as $row): ?>
 					<tr>
@@ -42,7 +43,7 @@
 						<td><?= $row['etat'] ?></td>
 						<td><?= $row['prix'] ?></td>
 						<td>
-							<a href="bookRemove.php">
+							<a href="bookRemove.php?exemplaire=<?= $row[''] ?>">
 								Supprimer
 							</a>
 						</td>

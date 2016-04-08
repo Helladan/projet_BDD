@@ -1,7 +1,7 @@
 <?php include "include/functions.php"; ?>
 
-<?php setPageTitle('Liste des utilisateurs')?>
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Liste des utilisateurs')?>
 <?php include "include/menu.php"; ?>
 
 

@@ -1,8 +1,8 @@
 <?php include "include/functions.php"; ?>
-<?php setPageTitle('Modification d\'un Autheur')?>
 
 
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Modification d\'un Autheur')?>
 <?php include "include/menu.php"; ?>
 
 

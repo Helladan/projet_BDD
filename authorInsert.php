@@ -1,7 +1,7 @@
 <?php include "include/functions.php"; ?>
-<?php setPageTitle('Ajout d\'un Autheur')?>
 
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Ajout d\'un Autheur')?>
 <?php include "include/menu.php"; ?>
 
 

@@ -10,8 +10,8 @@ if()
 }
 ?>
 
-<?php setPageTitle('Suppression d\'utilisateur')?>
 <?php include "include/header.php"; ?>
+<?php setPageTitle('Suppression d\'utilisateur')?>
 <?php include "include/menu.php"; ?>
 
 <?php include "include/footer.php"; ?>
