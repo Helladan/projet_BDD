@@ -207,6 +207,13 @@ body
 	color : #02DCC3;
 }
 
+/* Désactivation du spin-button des champs number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 /******************
 ****    FAQ    ****
 ******************/
