@@ -3,7 +3,6 @@
 <?php
 	$link = connectDB();
 
-
 	/* PROCESS */
 	if(isset($_POST['save']) && $_POST['save'])
 	{

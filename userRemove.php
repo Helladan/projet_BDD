@@ -10,6 +10,7 @@ if()
 }
 ?>
 
+<?php setPageTitle('Suppression d\'utilisateur')?>
 <?php include "include/header.php"; ?>
 <?php include "include/menu.php"; ?>
 

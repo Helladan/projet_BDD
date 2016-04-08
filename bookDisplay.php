@@ -15,6 +15,7 @@
 	$data = $que->fetchAll();
 ?>
 
+<?php setPageTitle('Liste des exemplaires')?>
 <?php include "include/header.php"; ?>
 <?php include "include/menu.php"; ?>
 
