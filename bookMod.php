@@ -1,3 +1,5 @@
+<?php include "include/functions.php"; ?>
+
 <?php
 if()
 {

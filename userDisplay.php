@@ -1,7 +1,8 @@
-<?php
-	/**
-	 * Created by PhpStorm.
-	 * User: anthony
-	 * Date: 25/03/16
-	 * Time: 11:51
-	 */
+<?php include "include/functions.php"; ?>
+
+
+<?php include "include/header.php"; ?>
+<?php include "include/menu.php"; ?>
+
+
+<?php include "include/footer.php"; ?>
