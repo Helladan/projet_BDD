@@ -28,6 +28,39 @@
 								Gestion de la base de données
 							</a>
 							<ul class="dropdown">
+								<!-- AUTHOR MENU -->
+								<li class="has-dropdown">
+									<a href="#">Gestion des auteurs</a>
+									<ul class="dropdown">
+										<li>
+											<a href="authorDisplay.php">
+												Liste des auteurs
+											</a>
+										</li>
+										<li>
+											<a href="authorInsert.php">
+												Ajouter un auteur
+											</a>
+										</li>
+									</ul>
+								</li>
+								<!-- WORK MENU -->
+								<li class="has-dropdown">
+									<a href="#">Gestion des oeuvres</a>
+									<ul class="dropdown">
+										<li>
+											<a href="workDisplay.php">
+												Liste des oeuvres
+											</a>
+										</li>
+										<li>
+											<a href="workInsert.php">
+												Ajouter une oeuvre
+											</a>
+										</li>
+									</ul>
+								</li>
+								<!-- BOOK MENU -->
 								<li class="has-dropdown">
 									<a href="#">Gestion des exemplaires</a>
 									<ul class="dropdown">
@@ -41,18 +74,9 @@
 												Ajouter un exemplaire
 											</a>
 										</li>
-										<li>
-											<a href="bookMod.php">
-												Modifier un exemplaire
-											</a>
-										</li>
-										<li>
-											<a href="bookRemove.php">
-												Supprimer un exemplaire
-											</a>
-										</li>
 									</ul>
 								</li>
+								<!-- USER MENU -->
 								<li class="has-dropdown">
 									<a href="#">Gestion des adhérents</a>
 									<ul class="dropdown">
@@ -64,16 +88,6 @@
 										<li>
 											<a href="userInsert.php">
 												Ajouter un adhérent
-											</a>
-										</li>
-										<li>
-											<a href="userMod.php">
-												Modifier un adhérent
-											</a>
-										</li>
-										<li>
-											<a href="userRemove.php">
-												Supprimer un adhérent
 											</a>
 										</li>
 									</ul>

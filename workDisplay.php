@@ -3,13 +3,11 @@
 <?php // PROCESS
 	$link = connectDB();
 
-	$req = 'SELECT ex.noExemplaire, ex.etat, ex.dateAchat, ex.prix,
-				   oe.titre, oe.dateParution,
+	$req = 'SELECT oe.noOeuvre, oe.titre, oe.dateParution,
 				   au.nomAuteur, au.prenomAuteur
-			FROM EXEMPLAIRE ex
-			NATURAL JOIN OEUVRE oe
+			FROM OEUVRE oe
 			NATURAL JOIN AUTEUR au
-			ORDER BY noExemplaire';
+			ORDER BY oe.noOeuvre';
 
 	$que = $link->query($req);
 	$data = $que->fetchAll();
@@ -24,29 +22,23 @@
 		<div class="panel">
 			<table>
 				<tr>
-					<th width="10%">N° Exemplaire</th>
-					<th width="10%">Titre</th>
-					<th width="14%">Nom auteur</th>
-					<th width="13%">Date de parution</th>
-					<th width="13%">Date d'achat</th>
-					<th width="10%">Etat</th>
-					<th width="10%">Prix</th>
+					<th width="10%">N° Oeuvre</th>
+					<th width="40%">Titre</th>
+					<th width="30%">Nom auteur</th>
+					<th width="10%">Date de parution</th>
 					<th width="10%"></th>
 				</tr>
 				<?php foreach($data as $row): ?>
 					<tr>
-						<td><?= $row['noExemplaire'] ?></td>
+						<td><?= $row['noOeuvre'] ?></td>
 						<td><?= $row['titre'] ?></td>
 						<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
 						<td><?= date('d/m/Y', strtotime($row['dateParution'])) ?></td>
-						<td><?= date('d/m/Y', strtotime($row['dateAchat'])) ?></td>
-						<td><?= $row['etat'] ?></td>
-						<td><?= $row['prix'] ?></td>
 						<td>
-							<a href="bookMod.php?book=<?= $row['noExemplaire'] ?>">
+							<a href="workMod.php?work=<?= $row['noOeuvre'] ?>">
 								Modifier
 							</a>
-							<a href="bookRemove.php?book=<?= $row['noExemplaire'] ?>">
+							<a href="workRemove.php?work=<?= $row['noOeuvre'] ?>">
 								Supprimer
 							</a>
 						</td>
