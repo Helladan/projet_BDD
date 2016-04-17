@@ -102,7 +102,7 @@
 					   "'.$annee.'-'.$mois.'-'.$jour.'", 
 					   "'.$prix.'")';
 		
-		$req = $link->exec($req) or die('L\'enregistrement n\'a pas pu s\'effectuer');
+		$que = $link->exec($req) or die('L\'enregistrement n\'a pas pu s\'effectuer');
 
 		$enregistrement = TRUE;
 	}
@@ -149,6 +149,9 @@
 	<div class="row">
 		<div class="large-12 medium-12 small-12 columns">
 			<div class="panel">
+				<h1>
+					Enregistrement d'un exemplaire
+				</h1>
 				<?php if(isset($errorMsg)): ?>
 					<small class="error">
 						Attention, certaines valeurs sont incorrectes
@@ -157,7 +160,7 @@
 				<form action="bookInsert.php"
 					  method="post">
 					<div class="row">
-						<div class="large-6 medium-6 small-6 columns">
+						<div class="large-6 medium-6 small-12 columns">
 							<label for="oeuvre">
 								Oeuvre
 								<select name="oeuvre"
@@ -183,7 +186,7 @@
 								</small>
 							<?php endif; ?>
 						</div>
-						<div class="large-6 medium-6 small-6 columns">
+						<div class="large-6 medium-6 small-12 columns">
 							<label for="etat">
 								État du livre
 								<select name="etat"
@@ -231,7 +234,7 @@
 					</div>
 					Date d'achat :
 					<div class="row">
-						<div class="large-1 medium-2 small-2 columns">
+						<div class="large-1 medium-2 small-4 columns">
 							<label for="jourAchat">
 								Jour
 								<input type="number"
@@ -249,7 +252,7 @@
 								</small>
 							<?php endif; ?>
 						</div>
-						<div class="large-1 medium-2 small-2 columns">
+						<div class="large-1 medium-2 small-4 columns">
 							<label for="moisAchat">
 								Mois
 								<input type="number"
@@ -283,7 +286,7 @@
 								</small>
 							<?php endif; ?>
 						</div>
-						<div class="large-2 medium-4 small-4 large-offset-2 end columns">
+						<div class="large-2 medium-4 small-6 large-offset-2 end columns">
 							<label for="prix">
 								Prix du livre
 								<input type="number"

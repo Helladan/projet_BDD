@@ -3,12 +3,12 @@
 <?php // PROCESS
 	$link = connectDB();
 
-	$req = 'SELECT ex.noExemplaire, ex.etat, ex.dateAchat, ex.prix,
-				   oe.titre, oe.dateParution,
-				   au.nomAuteur, au.prenomAuteur
-			FROM EXEMPLAIRE ex
-			NATURAL JOIN OEUVRE oe
-			NATURAL JOIN AUTEUR au
+	$req = 'SELECT EXEMPLAIRE.noExemplaire, EXEMPLAIRE.etat, EXEMPLAIRE.dateAchat, EXEMPLAIRE.prix,
+				   OEUVRE.titre, OEUVRE.dateParution,
+				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
+			FROM EXEMPLAIRE
+			NATURAL JOIN OEUVRE
+			NATURAL JOIN AUTEUR
 			ORDER BY noExemplaire';
 
 	$que = $link->query($req);
@@ -22,6 +22,9 @@
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
+			<h1>
+				Liste des exemplaires
+			</h1>
 			<table>
 				<tr>
 					<th width="10%">N° Exemplaire</th>

@@ -18,6 +18,9 @@
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
+			<h1>
+				Liste des auteurs
+			</h1>
 			<table>
 				<tr>
 					<th width="10%">N° Auteur</th>

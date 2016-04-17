@@ -3,23 +3,26 @@
 <?php // PROCESS
 	$link = connectDB();
 
-	$req = 'SELECT oe.noOeuvre, oe.titre, oe.dateParution,
-				   au.nomAuteur, au.prenomAuteur
-			FROM OEUVRE oe
-			NATURAL JOIN AUTEUR au
-			ORDER BY oe.noOeuvre';
+	$req = 'SELECT OEUVRE.noOeuvre, OEUVRE.titre, OEUVRE.dateParution,
+				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
+			FROM OEUVRE
+			NATURAL JOIN AUTEUR
+			ORDER BY OEUVRE.titre, OEUVRE.dateParution';
 
 	$que = $link->query($req);
 	$data = $que->fetchAll();
 ?>
 
 <?php include "include/header.php"; ?>
-<?php setPageTitle('Liste des exemplaires') ?>
+<?php setPageTitle('Liste des oeuvres') ?>
 <?php include "include/menu.php"; ?>
 
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
+			<h1>
+				Liste des oeuvres
+			</h1>
 			<table>
 				<tr>
 					<th width="10%">N° Oeuvre</th>
