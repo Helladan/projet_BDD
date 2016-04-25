@@ -7,7 +7,7 @@
 				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
 			FROM OEUVRE
 			NATURAL JOIN AUTEUR
-			ORDER BY OEUVRE.titre, OEUVRE.dateParution';
+			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, OEUVRE.dateParution';
 
 	$que = $link->query($req);
 	$data = $que->fetchAll();

@@ -9,7 +9,7 @@
 			FROM EXEMPLAIRE
 			NATURAL JOIN OEUVRE
 			NATURAL JOIN AUTEUR
-			ORDER BY noExemplaire';
+			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, EXEMPLAIRE.noExemplaire';
 
 	$que = $link->query($req);
 	$data = $que->fetchAll();
