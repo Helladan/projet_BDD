@@ -1,9 +1,6 @@
 <?php include "include/functions.php"; ?>
 
 <?php // PROCESS
-	echo '<pre>';
-	print_r($_POST);
-	echo '</pre>';
 	$link = connectDB();
 
 	if(isset($_POST['del_author']))
