@@ -19,17 +19,17 @@
 
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
-		<div class="panel">
+		<div class="panel" style="overflow: auto;">
 			<h1>
 				Liste des oeuvres
 			</h1>
-			<table>
+			<table style="width: 100%;">
 				<tr>
-					<th width="10%">N° Oeuvre</th>
-					<th width="40%">Titre</th>
-					<th width="30%">Nom auteur</th>
-					<th width="10%">Date de parution</th>
-					<th width="10%"></th>
+					<th style="width: 10%; ">N° Oeuvre</th>
+					<th style="width: 40%; ">Titre</th>
+					<th style="width: 30%; ">Nom auteur</th>
+					<th style="width: 10%; ">Date de parution</th>
+					<th style="width: 10%; "></th>
 				</tr>
 				<?php foreach($data as $row): ?>
 					<tr>

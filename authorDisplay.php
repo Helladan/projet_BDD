@@ -21,12 +21,12 @@
 			<h1>
 				Liste des auteurs
 			</h1>
-			<table>
+			<table style="width: 100%; ">
 				<tr>
-					<th width="10%">N° Auteur</th>
-					<th width="40%">Nom</th>
-					<th width="40%">Prénom</th>
-					<th width="10%"></th>
+					<th style="width:10%; ">N° Auteur</th>
+					<th style="width:40%; ">Nom</th>
+					<th style="width:40%; ">Prénom</th>
+					<th style="width:10%; "></th>
 				</tr>
 				<?php foreach($data as $row): ?>
 					<tr>
@@ -34,10 +34,10 @@
 						<td><?= $row['nomAuteur'] ?></td>
 						<td><?= $row['prenomAuteur'] ?></td>
 						<td>
-							<a href="authorMod.php?author=<?= $row['noExemplaire'] ?>">
+							<a href="authorMod.php?author=<?= $row['idAuteur'] ?>">
 								Modifier
 							</a>
-							<a href="authorRemove.php?author=<?= $row['noExemplaire'] ?>">
+							<a href="authorRemove.php?author=<?= $row['idAuteur'] ?>">
 								Supprimer
 							</a>
 						</td>

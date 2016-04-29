@@ -25,7 +25,7 @@
 						</li>
 						<li class="has-dropdown">
 							<a href="#">
-								Gestion de la base de données
+								Gestion de la bibliothèque
 							</a>
 							<ul class="dropdown">
 								<!-- AUTHOR MENU -->
