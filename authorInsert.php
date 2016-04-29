@@ -47,7 +47,7 @@
 <?php setPageTitle('Enregistrement d\'un auteur') ?>
 <?php include "include/menu.php"; ?>
 	<!-- DISPLAY -->
-<?php if($enregistrement): ?>
+<?php if(isset($enregistrement) && $enregistrement): ?>
 	<div class="row">
 		<div class="large-12 medium-12 small-12 columns">
 			<div class="panel">
