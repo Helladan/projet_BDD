@@ -3,9 +3,9 @@
 <?php // PROCESS
 	$link = connectDB();
 	
-	if(isset($_POST['del_author']))
+	if(isset($_POST['del']))
 	{
-		if($_POST['del_author'] == 'Oui')
+		if($_POST['del'] == 'Oui')
 		{
 			$req = 'DELETE FROM AUTEUR
 			        WHERE idAuteur = '.$_GET['author'];
@@ -41,14 +41,14 @@
 					Confirmer la suppression de cet auteur ?
 				</p>
 
-				<form action="authorRemove.php?author=<?= $_GET['author'] ?>"
+				<form action="authorRemove.php?author=<?= $author_id ?>"
 					  method="POST">
 					<input type="submit"
-						   name="del_author"
+						   name="del"
 						   value="Oui"
 						   class="button small">
 					<input type="submit"
-						   name="del_author"
+						   name="del"
 						   value="Non"
 						   class="button small">
 				</form>
