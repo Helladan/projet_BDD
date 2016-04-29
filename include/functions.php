@@ -31,3 +31,19 @@
             document.title = "'.$title.'";
         </script>';
 	}
+
+	// Go to indicate page - NO TIMER
+	function goPage($url)
+	{
+		echo "
+		<script type=text/javascript>window.location.replace('".$url."');</script>;
+		";
+	}
+
+	// Go to indicate page  - ON TIMER
+	function goPageTimer($url, $timer)
+	{
+		echo '
+		<script type="text/javascript">window.setTimeout("location=(\''.$url.'\');",'.$timer.');</script>
+		';
+	}
