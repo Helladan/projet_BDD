@@ -134,11 +134,11 @@
 	<div class="row">
 		<div class="large-12 medium-12 small-12 columns">
 			<div class="panel">
-				La modification a été effectuée. Retour à la liste des exemplaires dans un instant.
+				La modification a été effectuée. Retour à la liste des oeuvres dans un instant.
 			</div>
 		</div>
 	</div>
-	<?php goPageTimer("bookDisplay.php", 3000); ?>
+	<?php goPageTimer("workDisplay.php", 3000); ?>
 <?php else: ?>
 	<div class="row">
 		<div class="large-12 medium-12 small-12 columns">
