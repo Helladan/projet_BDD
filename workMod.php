@@ -2,7 +2,7 @@
 
 <?php
 	$link = connectDB();
-
+	
 	if(isset($_GET['work']))
 	{
 		$noOeuvre = $_GET['work'];
@@ -11,8 +11,8 @@
 	{
 		goPage('index.php');
 	}
-
-
+	
+	
 	/* PROCESS */
 	if(isset($_POST['save']) && $_POST['save'])
 	{
@@ -38,6 +38,14 @@
 		if(isset($_POST['anneeParution']))
 		{
 			$annee = $_POST['anneeParution'];
+			if(isset($_POST['moisParution']))
+			{
+				$mois = $_POST['moisParution'];
+			}
+			if(isset($_POST['moisParution']))
+			{
+				$jour = $_POST['jourParution'];
+			}
 			if(!is_numeric($annee) or !ctype_digit($annee))
 			{
 				$errorMsg['date'] = 'Il y a une erreur sur la date';
@@ -77,7 +85,32 @@
 			$errorMsg['annee'] = 'L\'année doit être renseignée.';
 			$test = FALSE;
 		}
-
+		
+	}
+	else
+	{
+		// Récupération des infos sur l'oeuvre à modifier
+		$req = 'SELECT oe.titre, oe.dateParution,
+				   au.idAuteur
+			FROM OEUVRE oe
+			NATURAL JOIN AUTEUR au
+			WHERE noOeuvre = '.$noOeuvre;
+		$que = $link->query($req);
+		$infosOeuvre = $que->fetchAll();
+		
+		if(count($infosOeuvre) == 1)
+		{
+			$auteur = $infosOeuvre[0]['idAuteur'];
+			$titre = $infosOeuvre[0]['titre'];
+			$dateParution = date('d/m/Y', strtotime($infosOeuvre[0]['dateParution']));
+			$jour = explode('/', $dateParution)[0];
+			$mois = explode('/', $dateParution)[1];
+			$annee = explode('/', $dateParution)[2];
+		}
+		else
+		{
+			die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
+		}
 	}
 	if(isset($test) and $test)
 	{
@@ -86,42 +119,19 @@
 					titre = "'.$titre.'",
 					dateParution = "'.$annee.'-'.$mois.'-'.$jour.'"
 				WHERE noOeuvre = "'.$noOeuvre.'"';
-
+		
 		$que = $link->exec($req) or die('La modification n\'a pas pu s\'effectuer, veuillez contacter l\'administrateur');
-
+		
 		$enregistrement = TRUE;
 		echo 'test';
 	}
-
-
-	// Récupération des infos sur l'oeuvre à modifier
-	$req = 'SELECT oe.titre, oe.dateParution,
-				   au.idAuteur
-			FROM OEUVRE oe
-			NATURAL JOIN AUTEUR au
-			WHERE noOeuvre = '.$noOeuvre;
-	$que = $link->query($req);
-	$infosOeuvre = $que->fetchAll();
-
-	if(count($infosOeuvre) == 1)
-	{
-		$auteur = $infosOeuvre[0]['idAuteur'];
-		$titre = $infosOeuvre[0]['titre'];
-		$dateParution = date('d/m/Y', strtotime($infosOeuvre[0]['dateParution']));
-		$jour = explode('/', $dateParution)[0];
-		$mois = explode('/', $dateParution)[1];
-		$annee = explode('/', $dateParution)[2];
-	}
-	else
-	{
-		die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
-	}
-
+	
+	
 	// Récupération de la liste des auteurs
 	$req = "SELECT idAuteur, nomAuteur, prenomAuteur
 			FROM AUTEUR
 			ORDER BY nomAuteur, prenomAuteur";
-
+	
 	$que = $link->query($req);
 	$listeAuteurs = $que->fetchAll();
 ?>

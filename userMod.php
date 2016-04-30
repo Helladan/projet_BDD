@@ -2,7 +2,7 @@
 
 <?php
 	$link = connectDB();
-
+	
 	if(isset($_GET['user']))
 	{
 		$idAdherent = $_GET['user'];
@@ -11,8 +11,8 @@
 	{
 		goPage('index.php');
 	}
-
-
+	
+	
 	/* PROCESS */
 	if(isset($_POST['save']) && $_POST['save'])
 	{
@@ -49,6 +49,14 @@
 				if(isset($_POST['moisPaiement']))
 				{
 					$mois = $_POST['moisPaiement'];
+					if(isset($_POST['moisPaiement']))
+					{
+						$mois = $_POST['moisPaiement'];
+					}
+					if(isset($_POST['moisPaiement']))
+					{
+						$jour = $_POST['jourPaiement'];
+					}
 					if($mois > 12 or $mois < 1 or !ctype_digit($mois))
 					{
 						$errorMsg['date'] = 'Il y a une erreur sur la date';
@@ -77,7 +85,30 @@
 			$errorMsg['annee'] = 'L\'année doit être renseignée.';
 			$test = FALSE;
 		}
-
+		
+	}
+	else
+	{
+		// Récupération des infos sur l'adhérent à modifier
+		$req = 'SELECT nomAdherent, adresse, datePaiement
+			FROM ADHERENT 
+			WHERE idAdherent = '.$idAdherent;
+		$que = $link->query($req);
+		$infosAdherent = $que->fetchAll();
+		
+		if(count($infosAdherent) == 1)
+		{
+			$nom = $infosAdherent[0]['nomAdherent'];
+			$adresse = $infosAdherent[0]['adresse'];
+			$datePaiement = date('d/m/Y', strtotime($infosAdherent[0]['datePaiement']));
+			$jour = explode('/', $datePaiement)[0];
+			$mois = explode('/', $datePaiement)[1];
+			$annee = explode('/', $datePaiement)[2];
+		}
+		else
+		{
+			die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
+		}
 	}
 	if(isset($test) and $test)
 	{
@@ -86,21 +117,21 @@
 					adresse = "'.$adresse.'", 
 					datePaiement = "'.$annee.'-'.$mois.'-'.$jour.'"
 				WHERE idAdherent = "'.$idAdherent.'"';
-
+		
 		$que = $link->exec($req) or die('La modification n\'a pas pu s\'effectuer, veuillez contacter l\'administrateur');
-
+		
 		$enregistrement = TRUE;
 		echo 'test';
 	}
-
-
+	
+	
 	// Récupération des infos sur l'adhérent à modifier
 	$req = 'SELECT nomAdherent, adresse, datePaiement
 			FROM ADHERENT 
 			WHERE idAdherent = '.$idAdherent;
 	$que = $link->query($req);
 	$infosAdherent = $que->fetchAll();
-
+	
 	if(count($infosAdherent) == 1)
 	{
 		$nom = $infosAdherent[0]['nomAdherent'];
@@ -114,7 +145,7 @@
 	{
 		die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
 	}
-	
+
 ?>
 
 <?php include "include/header.php"; ?>

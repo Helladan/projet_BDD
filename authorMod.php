@@ -38,6 +38,25 @@
 			$test = FALSE;
 		}
 	}
+	else
+	{
+		// Récupération des infos sur l'auteur à modifier
+		$req = 'SELECT prenomAuteur, nomAuteur
+			FROM AUTEUR
+			WHERE idAuteur = '.$idAuteur;
+		$que = $link->query($req);
+		$infosAuteur = $que->fetchAll();
+		
+		if(count($infosAuteur) == 1)
+		{
+			$authorFirstName = $infosAuteur[0]['prenomAuteur'];
+			$authorName = $infosAuteur[0]['nomAuteur'];
+		}
+		else
+		{
+			die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
+		}
+	}
 	if(isset($test) and $test)
 	{
 		$req = 'UPDATE AUTEUR 
@@ -52,23 +71,7 @@
 	}
 
 
-	// Récupération des infos sur l'auteur à modifier
-	$req = 'SELECT prenomAuteur, nomAuteur
-			FROM AUTEUR
-			WHERE idAuteur = '.$idAuteur;
-	$que = $link->query($req);
-	$infosAuteur = $que->fetchAll();
-
-	if(count($infosAuteur) == 1)
-	{
-		$authorFirstName = $infosAuteur[0]['prenomAuteur'];
-		$authorName = $infosAuteur[0]['nomAuteur'];
-	}
-	else
-	{
-		die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
-	}
-
+	
 	// Récupération de la liste des oeuvres
 	$req = "SELECT OEUVRE.noOeuvre, OEUVRE.titre, 
 				   AUTEUR.nomAuteur

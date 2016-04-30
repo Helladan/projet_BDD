@@ -2,7 +2,7 @@
 
 <?php
 	$link = connectDB();
-
+	
 	/* PROCESS */
 	if(isset($_POST['save']) && $_POST['save'])
 	{
@@ -28,6 +28,14 @@
 		if(isset($_POST['anneeParution']))
 		{
 			$annee = $_POST['anneeParution'];
+			if(isset($_POST['moisParution']))
+			{
+				$mois = $_POST['moisParution'];
+			}
+			if(isset($_POST['moisParution']))
+			{
+				$jour = $_POST['jourParution'];
+			}
 			if(!is_numeric($annee) or !ctype_digit($annee))
 			{
 				$errorMsg['date'] = 'Il y a une erreur sur la date';
@@ -67,7 +75,7 @@
 			$errorMsg['annee'] = 'L\'année doit être renseignée.';
 			$test = FALSE;
 		}
-
+		
 	}
 	if(isset($test) and $test)
 	{
@@ -77,20 +85,20 @@
 				VALUES ('.$auteur.', 
 					   "'.$titre.'", 
 					   "'.$annee.'-'.$mois.'-'.$jour.'")';
-
+		
 		$que = $link->exec($req) or die('L\'enregistrement n\'a pas pu s\'effectuer');
-
+		
 		$enregistrement = TRUE;
 	}
-
-
+	
+	
 	$req = "SELECT idAuteur, nomAuteur, prenomAuteur
 			FROM AUTEUR
 			ORDER BY nomAuteur, prenomAuteur";
-
+	
 	$que = $link->query($req);
 	$listeAuteurs = $que->fetchAll();
-
+	
 	if(!isset($jour))
 	{
 		$jour = date('d');

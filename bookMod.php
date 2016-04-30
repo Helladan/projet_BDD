@@ -49,6 +49,14 @@
 				if(isset($_POST['moisAchat']))
 				{
 					$mois = $_POST['moisAchat'];
+					if(isset($_POST['moisAchat']))
+					{
+						$mois = $_POST['moisAchat'];
+					}
+					if(isset($_POST['moisAchat']))
+					{
+						$jour = $_POST['jourAchat'];
+					}
 					if($mois > 12 or $mois < 1 or !ctype_digit($mois))
 					{
 						$errorMsg['date'] = 'Il y a une erreur sur la date';
@@ -101,6 +109,34 @@
 			$test = FALSE;
 		}
 	}
+	else
+	{
+		// Récupération des infos sur l'exemplaire à modifier
+		$req = 'SELECT ex.noOeuvre, ex.etat, ex.dateAchat, ex.prix,
+				   oe.titre,
+				   au.prenomAuteur, au.nomAuteur
+			FROM EXEMPLAIRE ex
+			NATURAL JOIN OEUVRE oe
+			NATURAL JOIN AUTEUR au
+			WHERE noExemplaire = '.$noExemplaire;
+		$que = $link->query($req);
+		$infosExemplaire = $que->fetchAll();
+
+		if(count($infosExemplaire) == 1)
+		{
+			$oeuvre = $infosExemplaire[0]['noOeuvre'];
+			$etat = $infosExemplaire[0]['etat'];
+			$dateAchat = date('d/m/Y', strtotime($infosExemplaire[0]['dateAchat']));
+			$jour = explode('/', $dateAchat)[0];
+			$mois = explode('/', $dateAchat)[1];
+			$annee = explode('/', $dateAchat)[2];
+			$prix = $infosExemplaire[0]['prix'];
+		}
+		else
+		{
+			die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
+		}
+	}
 	if(isset($test) and $test)
 	{
 		$req = 'UPDATE EXEMPLAIRE 
@@ -116,32 +152,6 @@
 		echo 'test';
 	}
 
-
-	// Récupération des infos sur l'exemplaire à modifier
-	$req = 'SELECT ex.noOeuvre, ex.etat, ex.dateAchat, ex.prix,
-				   oe.titre,
-				   au.prenomAuteur, au.nomAuteur
-			FROM EXEMPLAIRE ex
-			NATURAL JOIN OEUVRE oe
-			NATURAL JOIN AUTEUR au
-			WHERE noExemplaire = '.$noExemplaire;
-	$que = $link->query($req);
-	$infosExemplaire = $que->fetchAll();
-
-	if(count($infosExemplaire) == 1)
-	{
-		$oeuvre = $infosExemplaire[0]['noOeuvre'];
-		$etat = $infosExemplaire[0]['etat'];
-		$dateAchat = date('d/m/Y', strtotime($infosExemplaire[0]['dateAchat']));
-		$jour = explode('/', $dateAchat)[0];
-		$mois = explode('/', $dateAchat)[1];
-		$annee = explode('/', $dateAchat)[2];
-		$prix = $infosExemplaire[0]['prix'];
-	}
-	else
-	{
-		die('Erreur sur la requête, veuillez s\'il vous plait contacter l\'administrateur.');
-	}
 
 	// Récupération de la liste des oeuvres
 	$req = "SELECT OEUVRE.noOeuvre, OEUVRE.titre, 

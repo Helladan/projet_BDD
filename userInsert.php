@@ -28,6 +28,14 @@
 		if(isset($_POST['anneePaiement']))
 		{
 			$annee = $_POST['anneePaiement'];
+			if(isset($_POST['moisPaiement']))
+			{
+				$mois = $_POST['moisPaiement'];
+			}
+			if(isset($_POST['moisPaiement']))
+			{
+				$jour = $_POST['jourPaiement'];
+			}
 			if(!is_numeric($annee) or !ctype_digit($annee))
 			{
 				$errorMsg['date'] = 'Il y a une erreur sur la date';

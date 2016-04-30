@@ -39,6 +39,14 @@
 				if(isset($_POST['moisAchat']))
 				{
 					$mois = $_POST['moisAchat'];
+					if(isset($_POST['moisAchat']))
+					{
+						$mois = $_POST['moisAchat'];
+					}
+					if(isset($_POST['moisAchat']))
+					{
+						$jour = $_POST['jourAchat'];
+					}
 					if($mois > 12 or $mois < 1 or !ctype_digit($mois))
 					{
 						$errorMsg['date'] = 'Il y a une erreur sur la date';
