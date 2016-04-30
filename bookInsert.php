@@ -80,7 +80,7 @@
 			{
 				if($prix < 0)
 				{
-					$errorMsg['prix'] = 'Le prix doit être un positif';
+					$errorMsg['prix'] = 'Le prix doit être un nombre positif';
 					$test = FALSE;
 				}
 			}
@@ -180,6 +180,9 @@
 									<?php endforeach; ?>
 								</select>
 							</label>
+							<a href="workInsert.php">
+								Ajouter une oeuvre qui n'est pas dans la liste
+							</a>
 							<?php if(isset($errorMsg['oeuvre'])): ?>
 								<small class="error">
 									<?= $errorMsg['oeuvre'] ?>

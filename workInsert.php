@@ -154,6 +154,9 @@
 									<?php endforeach; ?>
 								</select>
 							</label>
+							<a href="authorInsert.php">
+								Ajouter un auteur qui n'est pas dans la liste
+							</a>
 							<?php if(isset($errorMsg['auteur'])): ?>
 								<small class="error">
 									<?= $errorMsg['auteur'] ?>

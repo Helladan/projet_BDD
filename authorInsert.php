@@ -51,7 +51,10 @@
 	<div class="row">
 		<div class="large-12 medium-12 small-12 columns">
 			<div class="panel">
-				L'enregistrement a été effectué.
+				<p>L'enregistrement a été effectué.</p>
+				<a href="workInsert.php">
+					Ajouter une oeuvre
+				</a>
 			</div>
 		</div>
 	</div>
