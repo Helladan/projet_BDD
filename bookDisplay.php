@@ -25,16 +25,16 @@
 			<h1>
 				Liste des exemplaires
 			</h1>
-			<table>
+			<table  style="width: 100%; ">
 				<tr>
-					<th width="10%">N° Exemplaire</th>
-					<th width="10%">Titre</th>
-					<th width="14%">Nom auteur</th>
-					<th width="13%">Date de parution</th>
-					<th width="13%">Date d'achat</th>
-					<th width="10%">Etat</th>
-					<th width="10%">Prix</th>
-					<th width="10%"></th>
+					<th style="width: 10%; ">N° Exemplaire</th>
+					<th style="width: 10%; ">Titre</th>
+					<th style="width: 14%; ">Nom auteur</th>
+					<th style="width: 13%; ">Date de parution</th>
+					<th style="width: 13%; ">Date d'achat</th>
+					<th style="width: 10%; ">Etat</th>
+					<th style="width: 10%; ">Prix</th>
+					<th style="width: 10%; "></th>
 				</tr>
 				<?php foreach($data as $row): ?>
 					<tr>

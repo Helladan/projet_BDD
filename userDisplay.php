@@ -21,14 +21,14 @@
 			<h1>
 				Liste des adhérents
 			</h1>
-			<table>
+			<table style="width: 100%; ">
 				<tr>
-					<th width="10%">N° Adhérent</th>
-					<th width="20%">Nom</th>
-					<th width="30%">Adresse</th>
-					<th width="10%">Nombre d'emprunts</th>
-					<th width="20%">Date de paiement</th>
-					<th width="10%"></th>
+					<th style="width: 10%; ">N° Adhérent</th>
+					<th style="width: 20%; ">Nom</th>
+					<th style="width: 30%; ">Adresse</th>
+					<th style="width: 10%; ">Nombre d'emprunts</th>
+					<th style="width: 20%; ">Date de paiement</th>
+					<th style="width: 10%; "></th>
 				</tr>
 				<?php foreach($data as $row): ?>
 					<?php
