@@ -95,6 +95,45 @@
 							</ul>
 						</li>
 					</ul>
+					
+					<!-- Right Nav Section -->
+					<ul class="right">
+						<li class="has-form">
+							<form action="search.php"
+								  method="post">
+								<div class="row collapse">
+									<div class="large-5 small-5 columns large-offset-3 small-offset-3">
+										<label for="search">
+											<input type="text"
+												   id="search"
+												   name="search"
+												   placeholder="Rechercher..."
+												   style="display: block;">
+										</label>
+									</div>
+									<div class="large-2 small-2 columns">
+										<a data-tooltip
+										   aria-haspopup="true"
+										   disabled=""
+										   class="button tiny info
+											   has-tip [tip-top tip-bottom tip-left tip-right] [radius round]"
+										   title="Utilisez le caractère * pour personaliser votre recherche :
+											   		  Après un terme pour une recherche commençant par ce terme,
+											   		  avant pour une recherche finissant par celui ci,
+											   		  et de chaque coté pour rechercher tout ce qui le comporte.">
+											?
+										</a>
+									</div>
+									<div class="large-2 small-2 columns">
+										<input type="image"
+											   src="img/search.svg"
+											   class="button tiny"
+											   style="display: block;">
+									</div>
+								</div>
+							</form>
+						</li>
+					</ul>
 				</section>
 			</nav>
 		</div>

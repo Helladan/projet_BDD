@@ -71,7 +71,9 @@
 	background-color : #3B5E7F;
 }
 
-.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button):hover
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button):hover,
+.top-bar-section ul li,
+.top-bar-section .has-form
 {
 	background-color : #01597D;
 }
