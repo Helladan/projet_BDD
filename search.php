@@ -108,6 +108,11 @@
 		$oeuvreSearch = TRUE;
 	}
 	/*****************************************************************/
+
+	if(empty($search))
+	{
+		$search = 'Toute la bibliothèque';
+	}
 ?>
 
 

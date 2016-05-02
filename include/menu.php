@@ -116,7 +116,7 @@
 										   aria-haspopup="true"
 										   disabled=""
 										   class="button tiny info
-											   has-tip [tip-top tip-bottom tip-left tip-right] [radius round]"
+										   		  has-tip [tip-top tip-bottom tip-left tip-right] [radius round]"
 										   title="Utilisez le caractère * pour personaliser votre recherche :
 											   		  Après un terme pour une recherche commençant par ce terme,
 											   		  avant pour une recherche finissant par celui ci,
