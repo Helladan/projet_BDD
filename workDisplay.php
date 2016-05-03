@@ -1,4 +1,5 @@
 <?php include "include/functions.php"; ?>
+<?php include "include/displayTable.php"; ?>
 
 <?php // PROCESS
 	$link = connectDB();
@@ -10,7 +11,7 @@
 			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, OEUVRE.dateParution';
 
 	$que = $link->query($req);
-	$data = $que->fetchAll();
+	$works = $que->fetchAll();
 ?>
 
 <?php include "include/header.php"; ?>
@@ -23,31 +24,7 @@
 			<h1>
 				Liste des oeuvres
 			</h1>
-			<table style="width: 100%;">
-				<tr>
-					<th style="width: 10%; ">N° Oeuvre</th>
-					<th style="width: 40%; ">Titre</th>
-					<th style="width: 30%; ">Nom auteur</th>
-					<th style="width: 10%; ">Date de parution</th>
-					<th style="width: 10%; "></th>
-				</tr>
-				<?php foreach($data as $row): ?>
-					<tr>
-						<td><?= $row['noOeuvre'] ?></td>
-						<td><?= $row['titre'] ?></td>
-						<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
-						<td><?= date('d/m/Y', strtotime($row['dateParution'])) ?></td>
-						<td>
-							<a href="workMod.php?work=<?= $row['noOeuvre'] ?>">
-								Modifier
-							</a>
-							<a href="workRemove.php?work=<?= $row['noOeuvre'] ?>">
-								Supprimer
-							</a>
-						</td>
-					</tr>
-				<?php endforeach; ?>
-			</table>
+			<?php workDisplay($works) ?>
 		</div>
 	</div>
 </div>
