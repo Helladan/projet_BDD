@@ -42,8 +42,8 @@
 	{
 		// Récupération des infos sur l'auteur à modifier
 		$req = 'SELECT prenomAuteur, nomAuteur
-			FROM AUTEUR
-			WHERE idAuteur = '.$idAuteur;
+				FROM AUTEUR
+				WHERE idAuteur = '.$idAuteur;
 		$que = $link->query($req);
 		$infosAuteur = $que->fetchAll();
 		

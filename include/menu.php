@@ -117,10 +117,9 @@
 										   disabled=""
 										   class="button tiny info
 										   		  has-tip [tip-top tip-bottom tip-left tip-right] [radius round]"
-										   title="Utilisez le caractère * pour personaliser votre recherche :
-											   		  Après un terme pour une recherche commençant par ce terme,
-											   		  avant pour une recherche finissant par celui ci,
-											   		  et de chaque coté pour rechercher tout ce qui le comporte.">
+										   title="Utilisez le caractère * pour personnaliser votre recherche :
+												  Après un terme pour une recherche commençant par ce terme,
+												  avant pour une recherche finissant par celui ci.">
 											?
 										</a>
 									</div>
