@@ -15,10 +15,10 @@
 					<td><?= $row["nomAuteur"] ?></td>
 					<td><?= $row["prenomAuteur"] ?></td>
 					<td>
-						<a href="authorMod.php?author=<?= $authors["idAuteur"] ?>">
+						<a href="authorMod.php?author=<?= $row["idAuteur"] ?>">
 							Modifier
 						</a>
-						<a href="authorRemove.php?author=<?= $authors["idAuteur"] ?>">
+						<a href="authorRemove.php?author=<?= $row["idAuteur"] ?>">
 							Supprimer
 						</a>
 					</td>
