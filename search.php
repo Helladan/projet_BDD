@@ -139,7 +139,7 @@
 
 	if(empty($search))
 	{
-		$search = 'Toute la bibliothèque';
+		$_POST['search'] = 'Toute la bibliothèque';
 	}
 ?>
 
