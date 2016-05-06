@@ -11,9 +11,10 @@
 			        WHERE idAuteur = '.$_GET['author'];
 			
 			$link->exec($req);
+			$suppression = TRUE;	
 		}
-	
-		$suppression = TRUE;	
+		else
+			goPage("authorDisplay.php");
 	}
 	
 	$author_id = $_GET['author'];
