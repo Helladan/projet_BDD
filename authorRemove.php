@@ -12,8 +12,8 @@
 			
 			$link->exec($req);
 		}
-		
-		header('Location: ./authorDisplay.php');
+	
+		$suppression = TRUE;	
 	}
 	
 	$author_id = $_GET['author'];
@@ -24,6 +24,13 @@
 	
 	$que = $link->query($req);
 	$data = $que->fetchAll();
+
+	$req = 'SELECT noOeuvre
+	        FROM OEUVRE
+	        WHERE idAuteur = ' . $author_id;
+
+	$que = $link->query($req);
+	$nb_oeuvre = count($que->fetchAll());
 ?>
 
 <?php include "include/header.php"; ?>
@@ -36,22 +43,29 @@
 			<?php if(count($data) == 1): ?>
 				<h3><?= $data[0]['nomAuteur'].' '.$data[0]['prenomAuteur'] ?></h3>
 				
-				<br>
-				<p>
-					Confirmer la suppression de cet auteur ?
-				</p>
+				<?php if($nb_oeuvre == 0): ?>
+					<br>
+					<p>
+						Confirmer la suppression de cet auteur ?
+					</p>
 
-				<form action="authorRemove.php?author=<?= $author_id ?>"
-					  method="POST">
-					<input type="submit"
-						   name="del"
-						   value="Oui"
-						   class="button small">
-					<input type="submit"
-						   name="del"
-						   value="Non"
-						   class="button small">
-				</form>
+					<form action="authorRemove.php?author=<?= $author_id ?>"
+						  method="POST">
+						<input type="submit"
+							   name="del"
+							   value="Oui"
+							   class="button small">
+						<input type="submit"
+							   name="del"
+							   value="Non"
+							   class="button small">
+					</form>
+				<?php else:?>
+					<p>Cet auteur possède déjà des oeuvres, impossible de le supprimer.</p>
+				<?php endif; ?>
+			<?php elseif(isset($suppression)): ?>
+				L'auteur a bien été supprimé. Retour à la liste des auteurs dans quelques instants...
+			<?php goPageTimer("authorDisplay.php", 4000); ?>
 			<?php else: ?>
 				Erreur sur la requête
 			<?php endif; ?>
