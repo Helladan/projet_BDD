@@ -12,18 +12,27 @@
 			
 			$link->exec($req);
 		}
+		else
+			goPage("userDisplay.php");
 		
-		header('Location: ./userDisplay.php');
+		$delete = TRUE;
 	}
-	
+
 	$adherent_id = $_GET['user'];
 	
 	$req = 'SELECT nomAdherent
-	        FROM ADHERENT
-	        WHERE idAdherent = '.$adherent_id;
+            FROM ADHERENT
+            WHERE idAdherent = '.$adherent_id;
 	
 	$que = $link->query($req);
 	$data = $que->fetchAll();
+
+	$req = 'SELECT COUNT(idAdherent)
+	        FROM EMPRUNT
+	        WHERE idAdherent = '.$adherent_id;
+
+	$que = $link->query($req);
+	$emprunt = $que->fetch(); $emprunt = $emprunt['COUNT(idAdherent)'];
 ?>
 
 <?php include "include/header.php"; ?>
@@ -33,7 +42,14 @@
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
-			<?php if(count($data) == 1): ?>
+			<?php if(isset($delete) && $delete): ?>
+				L'adhérent a été supprimé. Retour à la liste des adhérents dans quelques secondes...
+			<?php goPageTimer("userDisplay.php", 3000); ?>
+			<?php elseif($emprunt > 0): ?>
+				<h3><?= $data[0]['nomAdherent'] ?></h3>
+				Cet adhérent a des emprunts en cours, impossible de le supprimer. Retour à la liste des adhérents dans quelques secondes...
+			<?php goPageTimer("userDisplay.php", 4000); ?>
+			<?php elseif(count($data) == 1): ?>
 				<h3><?= $data[0]['nomAdherent'] ?></h3>
 				
 				<br>

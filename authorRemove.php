@@ -11,7 +11,7 @@
 			        WHERE idAuteur = '.$_GET['author'];
 			
 			$link->exec($req);
-			$suppression = TRUE;	
+			$delete = TRUE;	
 		}
 		else
 			goPage("authorDisplay.php");
@@ -41,7 +41,10 @@
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
-			<?php if(count($data) == 1): ?>
+			<?php if(isset($delete) && $delete): ?>
+				L'auteur a bien été supprimé. Retour à la liste des auteurs dans quelques instants...
+			<?php goPageTimer("authorDisplay.php", 4000); ?>
+			<?php elseif(count($data) == 1): ?>
 				<h3><?= $data[0]['nomAuteur'].' '.$data[0]['prenomAuteur'] ?></h3>
 				
 				<?php if($nb_oeuvre == 0): ?>
@@ -62,11 +65,9 @@
 							   class="button small">
 					</form>
 				<?php else:?>
-					<p>Cet auteur possède déjà des oeuvres, impossible de le supprimer.</p>
+					Cet auteur possède déjà des oeuvres, impossible de le supprimer. Retour à la liste des auteurs dans quelques instants...
+				<?php goPageTimer("authorDisplay.php", 5000); ?>
 				<?php endif; ?>
-			<?php elseif(isset($suppression)): ?>
-				L'auteur a bien été supprimé. Retour à la liste des auteurs dans quelques instants...
-			<?php goPageTimer("authorDisplay.php", 4000); ?>
 			<?php else: ?>
 				Erreur sur la requête
 			<?php endif; ?>

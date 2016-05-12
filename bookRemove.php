@@ -16,9 +16,10 @@
 			        WHERE noExemplaire = '.$_GET['book'];
 			
 			$link->exec($req);
+			$delete = TRUE;
 		}
-		
-		header('Location: ./bookDisplay.php');
+		else
+			goPage("bookDisplay.php");
 	}
 	
 	$book_id = $_GET['book'];
@@ -30,12 +31,26 @@
 	
 	$que = $link->query($req);
 	$data = $que->fetchAll();
+
+	$req = 'SELECT COUNT(noExemplaire)
+	        FROM EMPRUNT
+	        WHERE noExemplaire = '.$book_id;
+
+	$que = $link->query($req);
+	$emprunt = $que->fetch(); $emprunt = $emprunt['COUNT(noExemplaire)'];
 ?>
 
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
-			<?php if(count($data) == 1): ?>
+			<?php if(isset($delete) && $delete): ?>
+				L'exemplaire a bien été supprimé. Retour à la liste des exemplaires dans quelques instants...
+			<?php goPageTimer("bookDisplay.php", 3000); ?>
+			<?php elseif($emprunt > 0): ?>
+				<h3><?= $data[0]['titre'] ?></h3>
+				Cet exemplaire est en cours d'emprunt, impossible de le supprimer. Retour à la liste des exemplaires dans quelques instants...
+			<?php goPageTimer("bookDisplay.php", 5000); ?>
+			<?php elseif(count($data) == 1): ?>
 				<h3><?= $data[0]['titre'] ?></h3>
 				
 				<br>
