@@ -119,8 +119,7 @@
 				  titre REGEXP "'.$search.'" OR
 				  dateParution REGEXP "'.$search.'" OR
 				  nomAuteur REGEXP "'.$search.'" OR
-				  prenomAuteur REGEXP "'.$search.'" OR
-				  titre REGEXP "'.$search.'"
+				  prenomAuteur REGEXP "'.$search.'"
 			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, OEUVRE.dateParution';
 
 	$que = $link->query($req) or die('Erreur sur la requête, veuillez contacter l\'administrateur');
@@ -134,6 +133,37 @@
 	else
 	{
 		$worksSearch = TRUE;
+	}
+	/*****************************************************************/
+
+	// Recherche dans la table EMPRUNT
+	$req = 'SELECT * 
+			FROM EMPRUNT
+			NATURAL JOIN EXEMPLAIRE
+			NATURAL JOIN ADHERENT
+			INNER JOIN OEUVRE
+			INNER JOIN AUTEUR
+			WHERE EXEMPLAIRE.noOeuvre = OEUVRE.noOeuvre AND 
+				  OEUVRE.idAuteur = AUTEUR.idAuteur AND
+				  EMPRUNT.dateRendu IS NULL AND (
+				  titre REGEXP "'.$search.'" OR
+				  nomAuteur REGEXP "'.$search.'" OR
+				  prenomAuteur REGEXP "'.$search.'" OR
+				  nomAdherent REGEXP "'.$search.'" OR
+				  dateEmprunt REGEXP "'.$search.'")
+			ORDER BY EMPRUNT.dateEmprunt';
+
+	$que = $link->query($req) or die('Erreur sur la requête, veuillez contacter l\'administrateur');
+
+	$borrows = $que->fetchAll();
+
+	if(count($borrows) == 0)
+	{
+		$worksSearch = FALSE;
+	}
+	else
+	{
+		$borrowsSearch = TRUE;
 	}
 	/*****************************************************************/
 
@@ -213,6 +243,21 @@
 						 class="content">
 						<?php if($worksSearch): // Si il y a des résultats dans la recherche d'adhérents
 							workDisplay($works);
+						else: ?>
+							<p>
+								Pas de résultats dans la recherche
+							</p>
+						<?php endif; ?>
+					</div>
+				</li>
+				<li class="accordion-navigation">
+					<a href="#emprunt">
+						Emprunts
+					</a>
+					<div id="emprunt"
+						 class="content">
+						<?php if($borrowsSearch): // Si il y a des résultats dans la recherche d'adhérents
+							borrowDisplay($borrows);
 						else: ?>
 							<p>
 								Pas de résultats dans la recherche

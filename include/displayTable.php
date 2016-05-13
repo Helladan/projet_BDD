@@ -136,5 +136,85 @@
 				</tr>
 			<?php endforeach; ?>
 		</table>
-<?php
+		<?php
+	}
+
+	function borrowDisplay($borrows)
+	{ ?>
+		<table style="width: 100%; ">
+			<tr>
+				<th style="width: 10%; ">N° Exemplaire</th>
+				<th style="width: 30%; ">Titre</th>
+				<th style="width: 20%; ">Nom de l'auteur</th>
+				<th style="width: 20%; ">Nom de l'adhérent</th>
+				<th style="width: 10%; ">Date d'emprunt</th>
+				<th style="width: 10%; ">Jours d'emprunt</th>
+				<th style="width: 10%; "></th>
+			</tr>
+			<?php foreach($borrows as $row):
+				$dateDiff = date_diff(date_create($row['dateEmprunt']),
+									  date_create(date('Y/m/d')));
+				$diffDay = $dateDiff->format('%a');
+
+				if($diffDay > 45)
+				{
+					$notOK = 'style = "background-color : #f94d4d; 
+									   font-weight: bold; "';
+				}
+				else
+				{
+					$notOK = "";
+				}
+
+				$idEmprunt = $row['noExemplaire'].'_'.$row['idAdherent'].'_'.$row['dateEmprunt']
+				?>
+				<tr>
+					<td><?= $row['noExemplaire'] ?></td>
+					<td><?= $row['titre'] ?></td>
+					<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
+					<td><?= $row['nomAdherent'] ?></td>
+					<td><?= date('d/m/Y', strtotime($row['dateEmprunt'])) ?></td>
+					<td <?= $notOK ?> ><?= $diffDay ?></td>
+					<td>
+						<form action="borrowReturn"
+							  method="post">
+							<input type="hidden"
+								   id="idAdherent"
+								   name="idAdherent"
+								   value="<?= $row['idAdherent'] ?>">
+							<input type="hidden"
+								   id="noExemplaire"
+								   name="noExemplaire"
+								   value="<?= $row['idAdherent'] ?>">
+							<input type="hidden"
+								   id="dateEmprunt"
+								   name="dateEmprunt"
+								   value="<?= $row['idAdherent'] ?>">
+
+							<input type="submit"
+								   value="Rendre">
+						</form>
+						<form action="borrowRemove"
+							  method="post">
+							<input type="hidden"
+								   id="idAdherent"
+								   name="idAdherent"
+								   value="<?= $row['idAdherent'] ?>">
+							<input type="hidden"
+								   id="noExemplaire"
+								   name="noExemplaire"
+								   value="<?= $row['idAdherent'] ?>">
+							<input type="hidden"
+								   id="dateEmprunt"
+								   name="dateEmprunt"
+								   value="<?= $row['idAdherent'] ?>">
+
+							<input type="submit"
+								   value="Supprimer">
+						</form>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+		<?php
 	}

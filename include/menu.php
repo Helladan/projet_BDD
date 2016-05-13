@@ -92,6 +92,22 @@
 										</li>
 									</ul>
 								</li>
+								<!-- BORROW MENU -->
+								<li class="has-dropdown">
+									<a href="#">Gestion des emprunts</a>
+									<ul class="dropdown">
+										<li>
+											<a href="borrowDisplay.php">
+												Liste des emprunts
+											</a>
+										</li>
+										<li>
+											<a href="borrowInsert.php">
+												Ajouter un emprunt
+											</a>
+										</li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 					</ul>

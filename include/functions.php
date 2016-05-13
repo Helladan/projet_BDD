@@ -47,3 +47,10 @@
 		<script type="text/javascript">window.setTimeout("location=(\''.$url.'\');",'.$timer.');</script>
 		';
 	}
+
+	// Date validator
+	function dateValidator($date, $format)
+	{
+		$dateFormat = date_create_from_format($format, $date);
+		return $dateFormat && date_format($dateFormat, $format) == $date;
+	}
