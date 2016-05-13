@@ -176,42 +176,12 @@
 					<td><?= date('d/m/Y', strtotime($row['dateEmprunt'])) ?></td>
 					<td <?= $notOK ?> ><?= $diffDay ?></td>
 					<td>
-						<form action="borrowReturn"
-							  method="post">
-							<input type="hidden"
-								   id="idAdherent"
-								   name="idAdherent"
-								   value="<?= $row['idAdherent'] ?>">
-							<input type="hidden"
-								   id="noExemplaire"
-								   name="noExemplaire"
-								   value="<?= $row['idAdherent'] ?>">
-							<input type="hidden"
-								   id="dateEmprunt"
-								   name="dateEmprunt"
-								   value="<?= $row['idAdherent'] ?>">
-
-							<input type="submit"
-								   value="Rendre">
-						</form>
-						<form action="borrowRemove"
-							  method="post">
-							<input type="hidden"
-								   id="idAdherent"
-								   name="idAdherent"
-								   value="<?= $row['idAdherent'] ?>">
-							<input type="hidden"
-								   id="noExemplaire"
-								   name="noExemplaire"
-								   value="<?= $row['idAdherent'] ?>">
-							<input type="hidden"
-								   id="dateEmprunt"
-								   name="dateEmprunt"
-								   value="<?= $row['idAdherent'] ?>">
-
-							<input type="submit"
-								   value="Supprimer">
-						</form>
+						<a href="borrowReturn.php?idAdherent=<?= $row['idAdherent'] ?>&noExemplaire=<?= $row['noExemplaire']?>&dateEmprunt=<?= $row['dateEmprunt'] ?>">
+							Rendre
+						</a>
+						<a href="borrowRemove.php?idAdherent=<?= $row['idAdherent'] ?>&noExemplaire=<?= $row['noExemplaire']?>&dateEmprunt=<?= $row['dateEmprunt'] ?>">
+							Supprimer
+						</a>
 					</td>
 				</tr>
 			<?php endforeach; ?>
