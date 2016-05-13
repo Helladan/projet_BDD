@@ -1,19 +1,34 @@
 <?php
 	function authorDisplay($authors)
 	{
+		$link = connectDB();
 		?>
 		<table style="width: 100%; ">
 			<tr>
 				<th style="width: 10%; ">N° Auteur</th>
-				<th style="width: 40%; ">Nom</th>
-				<th style="width: 40%; ">Prénom</th>
+				<th style="width: 35%; ">Nom</th>
+				<th style="width: 35%; ">Prénom</th>
+				<th style="width: 10%">Nombre d'oeuvres</th>
 				<th style="width: 10%; "></th>
 			</tr>
-			<?php foreach($authors as $row): ?>
+			<?php foreach($authors as $row):
+
+				$req = "SELECT *
+						FROM OEUVRE
+						WHERE OEUVRE.idAuteur=".$row['idAuteur'];
+
+				$que = $link->query($req);
+				$numWorks = $que->rowCount();
+				?>
 				<tr>
 					<td><?= $row["idAuteur"] ?></td>
-					<td><?= $row["nomAuteur"] ?></td>
+					<td>
+						<a href="workByAuthor.php?idAuteur=<?= $row['idAuteur'] ?>">
+							<?= $row["nomAuteur"] ?>
+						</a>
+					</td>
 					<td><?= $row["prenomAuteur"] ?></td>
+					<td><?= $numWorks ?></td>
 					<td>
 						<a href="authorMod.php?author=<?= $row["idAuteur"] ?>">
 							Modifier
@@ -45,7 +60,11 @@
 				<tr>
 					<td><?= $row['noExemplaire'] ?></td>
 					<td><?= $row['titre'] ?></td>
-					<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
+					<td>
+						<a href="workByAuthor.php?idAuteur=<?= $row['idAuteur'] ?>">
+							<?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?>
+						</a>
+					</td>
 					<td><?= date('d/m/Y', strtotime($row['dateParution'])) ?></td>
 					<td><?= date('d/m/Y', strtotime($row['dateAchat'])) ?></td>
 					<td><?= $row['etat'] ?></td>
@@ -63,7 +82,35 @@
 		</table>
 		<?php
 	}
-	
+
+	function bookByConditionDisplay($books)
+	{ ?>
+		<table style="width: 100%; ">
+			<tr>
+				<th style="width: 10%; ">N° Exemplaire</th>
+				<th style="width: 45%; ">Titre</th>
+				<th style="width: 35%; ">Nom auteur</th>
+				<th style="width: 10%; "></th>
+			</tr>
+			<?php foreach($books as $row): ?>
+				<tr>
+					<td><?= $row['noExemplaire'] ?></td>
+					<td><?= $row['titre'] ?></td>
+					<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
+					<td>
+						<a href="bookMod.php?book=<?= $row['noExemplaire'] ?>">
+							Modifier
+						</a>
+						<a href="bookRemove.php?book=<?= $row['noExemplaire'] ?>">
+							Supprimer
+						</a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+		<?php
+	}
+
 	function userDisplay($users)
 	{
 		$link = connectDB();
@@ -110,21 +157,76 @@
 	
 	function workDisplay($works)
 	{
+		$link = connectDB();
 		?>
 		<table style="width: 100%;">
 			<tr>
 				<th style="width: 10%; ">N° Oeuvre</th>
-				<th style="width: 40%; ">Titre</th>
-				<th style="width: 30%; ">Nom auteur</th>
+				<th style="width: 35%; ">Titre</th>
+				<th style="width: 25%; ">Nom auteur</th>
 				<th style="width: 10%; ">Date de parution</th>
+				<th style="width: 10%">Nombre d'exemplaires</th>
 				<th style="width: 10%; "></th>
 			</tr>
-			<?php foreach($works as $row): ?>
+			<?php foreach($works as $row):
+
+				$req = "SELECT *
+					    FROM EXEMPLAIRE
+					    WHERE EXEMPLAIRE.noOeuvre=".$row['noOeuvre'];
+
+				$que = $link->query($req);
+				$numbBooks = $que->rowCount();
+				?>
 				<tr>
 					<td><?= $row['noOeuvre'] ?></td>
 					<td><?= $row['titre'] ?></td>
-					<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
+					<td>
+						<a href="workByAuthor.php?idAuteur=<?= $row['idAuteur'] ?>">
+							<?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?>
+						</a>
+					</td>
 					<td><?= date('d/m/Y', strtotime($row['dateParution'])) ?></td>
+					<td><?= $numbBooks ?></td>
+					<td>
+						<a href="workMod.php?work=<?= $row['noOeuvre'] ?>">
+							Modifier
+						</a>
+						<a href="workRemove.php?work=<?= $row['noOeuvre'] ?>">
+							Supprimer
+						</a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+		<?php
+	}
+	
+	function workByAuthorDisplay($works)
+	{
+		$link = connectDB();
+		?>
+		<table style="width: 100%;">
+			<tr>
+				<th style="width: 10%; ">N° Oeuvre</th>
+				<th style="width: 50%; ">Titre</th>
+				<th style="width: 20%; ">Date de parution</th>
+				<th style="width: 10%">Nombre d'exemplaires</th>
+				<th style="width: 10%; "></th>
+			</tr>
+			<?php foreach($works as $row):
+				
+				$req = "SELECT *
+					    FROM EXEMPLAIRE
+					    WHERE EXEMPLAIRE.noOeuvre=".$row['noOeuvre'];
+				
+				$que = $link->query($req);
+				$numbBooks = $que->rowCount();
+				?>
+				<tr>
+					<td><?= $row['noOeuvre'] ?></td>
+					<td><?= $row['titre'] ?></td>
+					<td><?= date('d/m/Y', strtotime($row['dateParution'])) ?></td>
+					<td><?= $numbBooks ?></td>
 					<td>
 						<a href="workMod.php?work=<?= $row['noOeuvre'] ?>">
 							Modifier
@@ -176,10 +278,10 @@
 					<td><?= date('d/m/Y', strtotime($row['dateEmprunt'])) ?></td>
 					<td <?= $notOK ?> ><?= $diffDay ?></td>
 					<td>
-						<a href="borrowReturn.php?idAdherent=<?= $row['idAdherent'] ?>&noExemplaire=<?= $row['noExemplaire']?>&dateEmprunt=<?= $row['dateEmprunt'] ?>">
+						<a href="borrowReturn.php?idAdherent=<?= $row['idAdherent'] ?>&noExemplaire=<?= $row['noExemplaire'] ?>&dateEmprunt=<?= $row['dateEmprunt'] ?>">
 							Rendre
 						</a>
-						<a href="borrowRemove.php?idAdherent=<?= $row['idAdherent'] ?>&noExemplaire=<?= $row['noExemplaire']?>&dateEmprunt=<?= $row['dateEmprunt'] ?>">
+						<a href="borrowRemove.php?idAdherent=<?= $row['idAdherent'] ?>&noExemplaire=<?= $row['noExemplaire'] ?>&dateEmprunt=<?= $row['dateEmprunt'] ?>">
 							Supprimer
 						</a>
 					</td>

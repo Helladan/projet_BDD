@@ -5,7 +5,7 @@
 	$link = connectDB();
 
 	$req = 'SELECT OEUVRE.noOeuvre, OEUVRE.titre, OEUVRE.dateParution,
-				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
+				   AUTEUR.idAuteur, AUTEUR.nomAuteur, AUTEUR.prenomAuteur
 			FROM OEUVRE
 			NATURAL JOIN AUTEUR
 			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, OEUVRE.dateParution';

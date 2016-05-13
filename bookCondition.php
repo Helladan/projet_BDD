@@ -32,24 +32,32 @@
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
 			<h1>
-				Liste des exemplaires
+				Liste des exemplaires en état <?= $condition ?>
 			</h1>
 			<p>
 				Afficher la liste des livres suivant leur état :
+				<?php if($condition != 'neuf'): ?>
 				<a href="bookCondition.php?condition=neuf">
 					neuf
 				</a>-
+				<?php endif; ?>
+				<?php if($condition != 'bon'): ?>
 				<a href="bookCondition.php?condition=bon">
 					bon
 				</a>-
+				<?php endif; ?>
+				<?php if($condition != 'moyen'): ?>
 				<a href="bookCondition.php?condition=moyen">
 					moyen
-				</a>-
+				</a> -
+				<?php endif; ?>
+				<?php if($condition != 'mauvais'): ?>
 				<a href="bookCondition.php?condition=mauvais">
 					mauvais
 				</a>
+				<?php endif; ?>
 			</p>
-			<?php bookDisplay($books); ?>
+			<?php bookByConditionDisplay($books); ?>
 		</div>
 	</div>
 </div>

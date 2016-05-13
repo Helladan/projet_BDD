@@ -6,7 +6,7 @@
 
 	$req = 'SELECT EXEMPLAIRE.noExemplaire, EXEMPLAIRE.etat, EXEMPLAIRE.dateAchat, EXEMPLAIRE.prix,
 				   OEUVRE.titre, OEUVRE.dateParution,
-				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
+				   AUTEUR.idAuteur, AUTEUR.nomAuteur, AUTEUR.prenomAuteur
 			FROM EXEMPLAIRE
 			NATURAL JOIN OEUVRE
 			NATURAL JOIN AUTEUR
