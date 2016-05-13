@@ -1,23 +1,31 @@
 <?php include "include/functions.php"; ?>
 <?php include "include/displayTable.php"; ?>
 
-<?php // PROCESS
+<?php
+	if(!isset($_GET['condition']))
+	{
+		goPage('index.php');
+	}
+
+	// PROCESS
+	$condition = $_GET['condition'];
 	$link = connectDB();
 
-	$req = 'SELECT EXEMPLAIRE.noExemplaire, EXEMPLAIRE.etat, EXEMPLAIRE.dateAchat, EXEMPLAIRE.prix,
+	$req = "SELECT EXEMPLAIRE.noExemplaire, EXEMPLAIRE.etat, EXEMPLAIRE.dateAchat, EXEMPLAIRE.prix,
 				   OEUVRE.titre, OEUVRE.dateParution,
 				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
 			FROM EXEMPLAIRE
 			NATURAL JOIN OEUVRE
 			NATURAL JOIN AUTEUR
-			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, EXEMPLAIRE.noExemplaire';
+			WHERE etat LIKE '".$condition."'
+			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, EXEMPLAIRE.noExemplaire";
 
 	$que = $link->query($req);
 	$books = $que->fetchAll();
 ?>
 
 <?php include "include/header.php"; ?>
-<?php setPageTitle('Liste des exemplaires') ?>
+<?php setPageTitle('Liste des exemplaires en état '.$condition) ?>
 <?php include "include/menu.php"; ?>
 
 <div class="row">

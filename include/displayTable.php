@@ -81,8 +81,8 @@
 				<?php
 				// Requete pour savoir le nombre d'emprunts de l'adhérent
 				$req = 'SELECT * 
-							FROM EMPRUNT
-							WHERE idAdherent = '.$row['idAdherent'];
+						FROM EMPRUNT
+						WHERE idAdherent = '.$row['idAdherent'];
 				
 				$que = $link->query($req);
 				

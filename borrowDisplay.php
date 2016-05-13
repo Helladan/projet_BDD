@@ -17,6 +17,24 @@
 	
 	$que = $link->query($req);
 	$borrows = $que->fetchAll();
+
+	$borrowsNumber = count($borrows);
+
+	if($borrowsNumber>0)
+	{
+		if($borrowsNumber == 1)
+		{
+			$text = 'Il y a un emprunt en cours :';
+		}
+		else
+		{
+			$text = 'Il y a '.$borrowsNumber.' emprunts en cours :';
+		}
+	}
+	else
+	{
+		$text = 'Il n\'y a pas d\'emprunts en cours.';
+	}
 ?>
 
 <?php include "include/header.php"; ?>
@@ -29,6 +47,9 @@
 			<h1>
 				Liste des emprunts en cours
 			</h1>
+			<p>
+				<?= $text ?>
+			</p>
 			<?php borrowDisplay($borrows); ?>
 		</div>
 	</div>
