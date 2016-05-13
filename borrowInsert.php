@@ -6,7 +6,6 @@
 	/* PROCESS */
 	if(isset($_POST['save']) && $_POST['save'])
 	{
-		var_dump($_POST);
 		$test = TRUE;
 		if(isset($_POST['exemplaire']))
 		{
@@ -31,7 +30,6 @@
 		if(isset($_POST['dateEmprunt']))
 		{
 			$dateEmprunt = $_POST['dateEmprunt'];
-			echo '<br>Date : '. $dateEmprunt;
 			if(!dateValidator($dateEmprunt, 'Y-m-d'))
 			{
 				$errorMsg['dateEmprunt'] = 'Date invalide';
@@ -74,8 +72,6 @@
 				WHERE dateRendu IS NULL 
 			)
 			ORDER BY AUTEUR.nomAuteur, OEUVRE.titre, EXEMPLAIRE.noExemplaire';
-
-	echo '<br>'.$req.'<br>';
 
 	$que = $link->query($req);
 	$listeExemplaires = $que->fetchAll();
