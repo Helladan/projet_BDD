@@ -59,7 +59,11 @@
 			<?php foreach($books as $row): ?>
 				<tr>
 					<td><?= $row['noExemplaire'] ?></td>
-					<td><?= $row['titre'] ?></td>
+					<td>
+						<a href="bookByWork.php?noOeuvre=<?= $row['noOeuvre'] ?>">
+							<?= $row['titre'] ?>
+						</a>
+					</td>
 					<td>
 						<a href="workByAuthor.php?idAuteur=<?= $row['idAuteur'] ?>">
 							<?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?>
@@ -95,7 +99,11 @@
 			<?php foreach($books as $row): ?>
 				<tr>
 					<td><?= $row['noExemplaire'] ?></td>
-					<td><?= $row['titre'] ?></td>
+					<td>
+						<a href="bookByWork.php?noOeuvre=<?= $row['noOeuvre'] ?>">
+							<?= $row['titre'] ?>
+						</a>
+					</td>
 					<td><?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?></td>
 					<td>
 						<a href="bookMod.php?book=<?= $row['noExemplaire'] ?>">
@@ -179,7 +187,11 @@
 				?>
 				<tr>
 					<td><?= $row['noOeuvre'] ?></td>
-					<td><?= $row['titre'] ?></td>
+					<td>
+						<a href="bookByWork.php?noOeuvre=<?= $row['noOeuvre'] ?>">
+							<?= $row['titre'] ?>
+						</a>
+					</td>
 					<td>
 						<a href="workByAuthor.php?idAuteur=<?= $row['idAuteur'] ?>">
 							<?= $row['nomAuteur'] ?>, <?= $row['prenomAuteur'] ?>
@@ -224,7 +236,11 @@
 				?>
 				<tr>
 					<td><?= $row['noOeuvre'] ?></td>
-					<td><?= $row['titre'] ?></td>
+					<td>
+						<a href="bookByWork.php?noOeuvre=<?= $row['noOeuvre'] ?>">
+							<?= $row['titre'] ?>
+						</a>
+					</td>
 					<td><?= date('d/m/Y', strtotime($row['dateParution'])) ?></td>
 					<td><?= $numbBooks ?></td>
 					<td>

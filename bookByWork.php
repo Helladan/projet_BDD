@@ -1,17 +1,32 @@
 <?php include "include/functions.php"; ?>
 <?php include "include/displayTable.php"; ?>
 
-<?php // PROCESS
+<?php 
+	if(!isset($_GET['noOeuvre']))
+	{
+		goPage('index.php');
+	}
+	
+	$noOeuvre = $_GET['noOeuvre'];
+	
+	// PROCESS
 	$link = connectDB();
-
-	$req = 'SELECT *
+	
+	$req = "SELECT *
 			FROM EXEMPLAIRE
 			NATURAL JOIN OEUVRE
 			NATURAL JOIN AUTEUR
-			ORDER BY AUTEUR.nomAuteur, AUTEUR.prenomAuteur, OEUVRE.titre, EXEMPLAIRE.noExemplaire';
-
+			WHERE EXEMPLAIRE.noOeuvre = ".$noOeuvre."
+			ORDER BY EXEMPLAIRE.noExemplaire";
+	
 	$que = $link->query($req);
 	$books = $que->fetchAll();
+	
+	$req = "SELECT OEUVRE.titre
+			FROM OEUVRE
+			WHERE noOeuvre = ".$noOeuvre;
+	
+	$que = $link->query($req);
 ?>
 
 <?php include "include/header.php"; ?>
@@ -22,7 +37,7 @@
 	<div class="large-12 medium-12 small-12 columns">
 		<div class="panel">
 			<h1>
-				Liste des exemplaires
+				Liste des exemplaires de l'oeuvre <?= $oeuvre ?>
 			</h1>
 			<p>
 				Afficher la liste des livres suivant leur état :

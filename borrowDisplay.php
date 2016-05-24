@@ -17,10 +17,10 @@
 	
 	$que = $link->query($req);
 	$borrows = $que->fetchAll();
-
+	
 	$borrowsNumber = count($borrows);
-
-	if($borrowsNumber>0)
+	
+	if($borrowsNumber > 0)
 	{
 		if($borrowsNumber == 1)
 		{

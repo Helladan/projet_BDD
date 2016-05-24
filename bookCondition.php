@@ -11,9 +11,7 @@
 	$condition = $_GET['condition'];
 	$link = connectDB();
 
-	$req = "SELECT EXEMPLAIRE.noExemplaire, EXEMPLAIRE.etat, EXEMPLAIRE.dateAchat, EXEMPLAIRE.prix,
-				   OEUVRE.titre, OEUVRE.dateParution,
-				   AUTEUR.nomAuteur, AUTEUR.prenomAuteur
+	$req = "SELECT *
 			FROM EXEMPLAIRE
 			NATURAL JOIN OEUVRE
 			NATURAL JOIN AUTEUR
